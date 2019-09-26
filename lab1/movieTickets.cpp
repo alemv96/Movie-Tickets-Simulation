@@ -27,9 +27,10 @@ int main(){
    int tickets;
    double subtotal,tax,total; // user's receipt.
    int option; //menu variables.
+   bool flag;
 
   //Clean the screen.
-    system("cls");
+    //system("cls");
 
       do {
         std::cout << "1) Press 1 to buy movie tickets \n"
@@ -39,7 +40,8 @@ int main(){
 
           if (option == 1)
           {
-
+            flag = true;
+            do {
               std::cout << "Now playing: \t " << movie_name << '\t' << "rated: \t" << rating <<'\n';
               std::cout << "Time: \t" << startHour << ": " << startMinute << " " << ampm <<'\n';
               std::cout << "Seats available : \t " << seatingLeft << '\n';
@@ -48,8 +50,14 @@ int main(){
 
               if ( tickets <= 0 ){
                 std::cout << "Please enter a valid value" << '\n';
-              else if (tickets > seatingLeft)
-                std::cout << "Sorry but we don't have that many seats available" << '\n';             
+                //System("pause");
+                //system("clear");
+              }
+              else if (tickets > seatingLeft){
+                std::cout << "Sorry but we don't have that many seats available" << '\n';
+                //system("pause");
+                //System("clear");
+              }
               else
               {
                 seatingLeft -= tickets;
@@ -57,25 +65,25 @@ int main(){
                 tax = TAX_RATE * subtotal;
                 total = tax + subtotal;
                 //show the receipt:
-                system("cls");
+                //system("cls");
                 std::cout << "Movie name: \t" << movie_name << '\n';
-                std::cout << "Tickets purchased: \t" << tickets << '\n';
-                std::cout << "Subtotal: \t"<< subtotal << '\n';
-                std::cout << "Tax: \t"<< tax << '\n';
-                std::cout << "Total: \t" << total << '\n';
+                std::cout << "Tickets purchased: \t " << tickets << '\n';
+                std::cout << "Subtotal: \t $"<< subtotal << '\n';
+                std::cout << "Tax: \t $"<< tax << '\n';
+                std::cout << "Total: \t $" << total << '\n';
                 std::cout << "Thanks for using My Theatre's Ticketing Program" << '\n';
-                system("pause");
-                system("cls");
+                flag = false;
+                //system("pause");
+                //system("cls");
               }
-
-
-          }
+            }while(flag);
+         }
           else{
             std::cout << "Thanks for visiting us, please come back!" << std::endl;
-            system ("pause");
+            //system ("pause");
           }
 
     }while(option != 2);
 
-  return 0;
+    return 0;
 }
